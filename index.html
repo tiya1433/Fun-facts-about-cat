@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Cat Facts</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .fact-box {
+            border: 2px solid #333;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            background-color: #fff;
+            transition: opacity 0.5s ease;
+            opacity: 0;
+        }
+
+        .show {
+            opacity: 1;
+        }
+
+        .twitter-button {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 15px;
+            background-color: #1DA1F2;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button id="factButton">Show Random Cat Fact</button>
+        <div id="factDisplay" class="fact-box"></div>
+        <a id="twitterShare" class="twitter-button" href="#" target="_blank">Share on Twitter</a>
+    </div>
+    <script>
+        const facts = [
+            { fact: "Cats have five toes on their front paws, but only four on their back paws." },
+            { fact: "A group of cats is called a clowder." },
+            { fact: "Cats can rotate their ears 180 degrees." },
+            { fact: "The average cat sleeps for 12 to 16 hours a day." },
+            { fact: "Cats can make over 100 different sounds." },
+            { fact: "A cat's nose print is unique, much like a human's fingerprint." },
+            { fact: "Cats can jump up to six times their body length in one leap." },
+            { fact: "The world's oldest cat lived to be 38 years old." },
+            { fact: "Cats have a special collarbone that allows them to always land on their feet." },
+            { fact: "The average cat weighs between 9 and 11 pounds." }
+        ];
+
+        document.getElementById('factButton').addEventListener('click', function() {
+            const randomIndex = Math.floor(Math.random() * facts.length);
+            const selectedFact = facts[randomIndex].fact;
+
+            const factDisplay = document.getElementById('factDisplay');
+            factDisplay.textContent = selectedFact;
+            factDisplay.classList.add('show');
+
+            // Update Twitter share link
+            const twitterShare = document.getElementById('twitterShare');
+            twitterShare.href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(selectedFact)}`;
+        });
+    </script>
+</body>
+</html>
